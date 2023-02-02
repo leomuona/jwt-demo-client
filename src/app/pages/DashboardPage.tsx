@@ -1,4 +1,4 @@
-export function Dashboard(): JSX.Element {
+export function DashboardPage(): JSX.Element {
   return (
     <div>
       <p>TODO: dashboard</p>
