@@ -1,9 +1,10 @@
 import { Global, ThemeProvider } from "@emotion/react";
 import { StrictMode } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useOutletContext } from "react-router-dom";
 
-import { DarkModeContext, useDarkMode } from "./DarkModeContext";
-import { darkTheme, lightTheme } from "./theme/theme";
+import { DarkModeContext, useDarkMode } from "../DarkModeContext";
+import { AuthenticatedUser } from "../models/authenticatedUser";
+import { darkTheme, lightTheme } from "../theme/theme";
 
 export function Root(): JSX.Element {
   return (
@@ -17,6 +18,9 @@ export function Root(): JSX.Element {
 
 function RootWithContext() {
   const { isDarkMode } = useDarkMode();
+
+  const authenticatedUser = { name: "Kikki Hiiri" };
+  //const authenticatedUser = null;
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
@@ -40,7 +44,23 @@ function RootWithContext() {
           },
         })}
       />
-      <Outlet />
+      <Outlet context={createRootContext(authenticatedUser)} />
     </ThemeProvider>
   );
+}
+
+function createRootContext(
+  authenticatedUser: AuthenticatedUser | null,
+): RootContext {
+  return {
+    authenticatedUser,
+  };
+}
+
+export type RootContext = {
+  authenticatedUser: AuthenticatedUser | null;
+};
+
+export function useRootContext(): RootContext {
+  return useOutletContext<RootContext>();
 }

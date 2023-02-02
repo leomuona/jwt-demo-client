@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { createRoutes } from "./app/createRoutes";
+import { createRoutes } from "./app/setup/createRoutes";
 
 const container = document.getElementById("root")!;
 const root = ReactDOM.createRoot(container);
