@@ -3,8 +3,6 @@ import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 export function ErrorPage(): JSX.Element {
   const error = useRouteError();
 
-  console.log(error);
-
   if (isRouteErrorResponse(error)) {
     return (
       <div>
@@ -13,6 +11,8 @@ export function ErrorPage(): JSX.Element {
       </div>
     );
   }
+
+  console.log(error);
 
   return (
     <div>
