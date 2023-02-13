@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import { RouteObject } from "react-router-dom";
 
 import { DashboardPage } from "../pages/DashboardPage";
@@ -7,11 +8,13 @@ import { ROUTES } from "../routes";
 import { App } from "./App";
 import { NavigateIfLoggedIn } from "./NavigateIfLoggedIn";
 import { Root } from "./Root";
+import { rootLoader } from "./loaders/rootLoader";
 
-export function createRoutes(): RouteObject[] {
+export function createRoutes(queryClient: QueryClient): RouteObject[] {
   const routes = [
     {
       path: "/",
+      loader: rootLoader(queryClient),
       element: <Root />,
       errorElement: <ErrorPage />,
       children: [createNavigateIfLoggedInRoutes(), createAppRoutes()],
