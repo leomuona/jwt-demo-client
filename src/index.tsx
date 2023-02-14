@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { createRoutes } from "./app/setup/createRoutes";
-import { createQueryClient } from "./app/setup/query";
+import { createQueryClient } from "./app/setup/queryClient";
 
 const container = document.getElementById("root")!;
 const root = ReactDOM.createRoot(container);

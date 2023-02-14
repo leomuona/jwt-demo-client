@@ -17,14 +17,14 @@ export function createRoutes(queryClient: QueryClient): RouteObject[] {
       loader: rootLoader(queryClient),
       element: <Root />,
       errorElement: <ErrorPage />,
-      children: [createNavigateIfLoggedInRoutes(), createAppRoutes()],
+      children: [createLoginRoutes(), createAppRoutes()],
     },
   ];
 
   return routes;
 }
 
-function createNavigateIfLoggedInRoutes() {
+function createLoginRoutes() {
   return {
     element: <NavigateIfLoggedIn />,
     children: [
