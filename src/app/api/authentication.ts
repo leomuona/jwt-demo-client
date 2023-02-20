@@ -12,7 +12,7 @@ export async function loginRequest(
   const response = await getApiClient(null).post<JwtResponse>(
     "/auth/login",
     {
-      username,
+      login: username,
       password,
     },
     {
