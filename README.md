@@ -1,4 +1,4 @@
-# MaiBB client
+# JWT Demo client
 
 JWT Auth demo software.
 
